@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* 🌟 Tambahkan baris ini di file CSS utama Anda */
+@variant dark (&:where(.dark, .dark *));
+
+/* 🌟 Tambahkan baris ini di file CSS utama Anda */
+@variant light (&:where(.light, .light *));
+
+/* --- Mode Terang (Light Mode) --- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* Abu-abu terang (slate-300) */
+  border-radius: 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* --- Mode Gelap (Dark Mode) --- */
+/* Jika kamu menggunakan dark mode otomatis bawaan sistem: */
+@media (prefers-color-scheme: dark) {
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #9da5b3; /* Abu-abu gelap (gray-600), mirip scrollbar Gemini */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8b919b; /* Sedikit lebih terang saat di-hover (gray-500) */
+  }
+}
+
+/* ATAU jika project kamu menggunakan class .dark di elemen <html> (Standar Tailwind): */
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Merapikan elemen di dalam markdown agar pas dengan bubble chat */
+.chat-markdown p {
+  margin: 0 0 0.5rem 0;
+}
+.chat-markdown p:last-child {
+  margin-bottom: 0;
+}
+
+/* Styling blok kode (```bash ... ```) */
+.chat-markdown pre {
+  background-color: #1e1e24; /* Latar belakang gelap untuk kode */
+  color: #f8f8f2;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+  font-family: monospace;
+}
+
+/* Styling kode segaris (`code`) */
+.chat-markdown :not(pre) > code {
+  background-color: #e2e8f0; /* Abu-abu terang di mode light */
+  color: #e11d48; /* Warna teks agak kemerahan */
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+}
+
+/* Penyesuaian kode segaris di mode gelap */
+@media (prefers-color-scheme: dark) {
+  .chat-markdown :not(pre) > code {
+    background-color: #27272a; /* Zinc 800 */
+    color: #fda4af;
+  }
+}
+.dark .chat-markdown :not(pre) > code {
+  background-color: #27272a;
+  color: #fda4af;
+}
+
+.chat-markdown ul {
+  list-style-type: disc;
+  margin-left: 1.5rem; /* Memberikan indentasi untuk struktur tree */
+}
+
+.chat-markdown ul ul {
+  list-style-type: circle;
+  margin-top: 0.5rem;
+}
+
+.chat-markdown ul ul ul {
+  list-style-type: square;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" style="background-color: #020617; color-scheme: dark light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Kiero.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>frontend</title>
+
+    <meta name="theme-color" content="#020617" />
+
+    <script>
+      // 🌟 TRICK 3: Logika deteksi tema yang langsung memanipulasi style HTML tercepat
+      const htmlEl = document.documentElement;
+      const isDark =
+        localStorage.theme === "dark" || !("theme" in localStorage);
+
+      if (isDark) {
+        htmlEl.classList.add("dark");
+        htmlEl.style.setProperty("background-color", "#020617", "important");
+        htmlEl.style.colorScheme = "dark";
+      } else {
+        htmlEl.classList.remove("dark");
+        htmlEl.style.setProperty("background-color", "#f8fafc", "important");
+        htmlEl.style.colorScheme = "light";
+      }
+    </script>
+
+    <style>
+      /* 🌟 TRICK 4: Kunci paksa area body agar tidak melar atau berubah warna saat render ulang */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Mencegah tabrakan warna seleksi CSS awal */
+      body {
+        background-color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

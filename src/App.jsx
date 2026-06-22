@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Toaster } from "sonner";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import { Loader2 } from "lucide-react"; // Untuk spinner loading yang rapi
+import { Loader2, Settings } from "lucide-react"; // Untuk spinner loading yang rapi
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,6 +18,9 @@ import MasterUsers from "./pages/MasterUsers";
 import MasterRoles from "./pages/MasterRoles";
 import FileManagement from "./pages/FileManagement";
 import Recording from "./pages/RecordingManagement";
+import SuggestedQuestions from "./pages/SuggestedQuestions";
+import SettingsPage from "./pages/Settings";
+// import Settings from "./pages/Settings";
 
 // Komponen Sementara untuk Mengetes Menu Knowledge Base AI
 const DummyDocuments = () => (
@@ -170,21 +173,10 @@ function App() {
           <Route path="/master/roles" element={<MasterRoles />} />
           <Route
             path="/master/suggested-questions"
-            element={
-              <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 text-white">
-                <h2>Suggested Questions</h2>
-              </div>
-            }
+            element={<SuggestedQuestions />}
           />
 
-          <Route
-            path="/setting"
-            element={
-              <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 text-white">
-                <h2>Pengaturan Sistem</h2>
-              </div>
-            }
-          />
+          <Route path="/setting" element={<SettingsPage />} />
         </Route>
 
         {/* 🚨 Jalur Pengaman jika rute tidak ditemukan */}
